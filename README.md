@@ -8,7 +8,7 @@
 # Vagrant file will provision below things.
 
 ## Prepare the resources
-
+``` bash
 $ mkdir -p ~/sample/data
 $ mkdir -p ~/sample/init/scripts
 
@@ -31,10 +31,12 @@ $ cat <<'EOF' >>~/sample/init/genesis-n15.json
   "timestamp"  : "0x00"
 }
 EOF
+```
 
 ## Init a database that uses above genesis block (all nodes MUST be the same)
+``` bash
 $ geth --datadir ~/sample/data init ~/sample/init/genesis-n15.json
-
+```
 
 # How it works
 1. clone / download 
@@ -47,7 +49,4 @@ $ geth --datadir ~/sample/data init ~/sample/init/genesis-n15.json
    - To create private blockchain network using Geth
    - Basic transfer transaction between accounts
    - How P2P works
-
-
-
 
