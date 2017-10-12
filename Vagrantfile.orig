@@ -1,0 +1,63 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+UBUNTU_BOX = "ubuntu/trusty64"
+VM_PROVIDER = "virtualbox"
+
+# networking
+NETWORK = "private_network"
+
+
+Vagrant.configure("2") do |config|
+
+  config.vm.provision "shell", inline: <<-EOF
+      useradd -m -d /home/[SSH_USER] [SSH_USER] -s /bin/bash
+      sudo sed -i '/^[SSH_USER]/d' /etc/sudoers
+      sudo echo "[SSH_USER]   ALL=(ALL)    NOPASSWD: ALL" >> /etc/sudoers
+      sudo su - [SSH_USER] -c "mkdir -m 700 ~/.ssh"
+      sudo su - [SSH_USER] -c "install -b -m 644 /dev/null ~/.ssh/authorized_keys"
+      sudo su - [SSH_USER] -c "echo '[RSA_PUBLIC_KEY]' > ~/.ssh/authorized_keys"
+      sudo apt-get install software-properties-common
+      sudo add-apt-repository -y ppa:ethereum/ethereum
+      sudo apt-get update
+      sudo apt-get install ethereum -y
+      sudo su - [SSH_USER] -c "mkdir -p ~/sample/data; cp -r /vagrant/init ~/sample/"
+      sudo su - [SSH_USER] -c "geth --datadir ~/sample/data init ~/sample/init/genesis-n15.json"
+    EOF
+  end
+
+  # miner1 - miner node
+  config.vm.define "miner1" do |s|
+    s.vm.hostname = "miner1"
+    s.vm.box = UBUNTU_BOX
+    s.vm.network NETWORK, ip: "169.254.142.21"
+    s.vm.provider VM_PROVIDER do |box|
+      box.memory = 1024
+      box.cpus = 2
+    end
+  end
+
+  # node1 - normal node
+  config.vm.define "node1" do |s|
+    s.vm.hostname = "node1"
+    s.vm.box = UBUNTU_BOX
+    s.vm.network NETWORK, ip: "169.254.142.31"
+    s.vm.provider VM_PROVIDER do |box|
+      box.memory = 512
+      box.cpus = 1
+    end
+  end
+
+  # node2 - normal node
+  config.vm.define "node2" do |s|
+    s.vm.hostname = "node2"
+    s.vm.box = UBUNTU_BOX
+    s.vm.network NETWORK, ip: "169.254.142.32"
+    s.vm.provider VM_PROVIDER do |box|
+      box.memory = 512
+      box.cpus = 1
+    end
+  end
+
+
+end
