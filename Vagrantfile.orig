@@ -11,18 +11,18 @@ NETWORK = "private_network"
 Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-EOF
-      useradd -m -d /home/[SSH_USER] [SSH_USER] -s /bin/bash
-      sudo sed -i '/^[SSH_USER]/d' /etc/sudoers
-      sudo echo "[SSH_USER]   ALL=(ALL)    NOPASSWD: ALL" >> /etc/sudoers
-      sudo su - [SSH_USER] -c "mkdir -m 700 ~/.ssh"
-      sudo su - [SSH_USER] -c "install -b -m 644 /dev/null ~/.ssh/authorized_keys"
-      sudo su - [SSH_USER] -c "echo '[RSA_PUBLIC_KEY]' > ~/.ssh/authorized_keys"
+      useradd -m -d /home/SSH_USER SSH_USER -s /bin/bash
+      sudo sed -i '/^SSH_USER/d' /etc/sudoers
+      sudo echo "SSH_USER   ALL=(ALL)    NOPASSWD: ALL" >> /etc/sudoers
+      sudo su - SSH_USER -c "mkdir -m 700 ~/.ssh"
+      sudo su - SSH_USER -c "install -b -m 644 /dev/null ~/.ssh/authorized_keys"
+      sudo su - SSH_USER -c "echo 'RSA_PUBLIC_KEY' > ~/.ssh/authorized_keys"
       sudo apt-get install software-properties-common
       sudo add-apt-repository -y ppa:ethereum/ethereum
       sudo apt-get update
       sudo apt-get install ethereum -y
-      sudo su - [SSH_USER] -c "mkdir -p ~/sample/data; cp -r /vagrant/init ~/sample/"
-      sudo su - [SSH_USER] -c "geth --datadir ~/sample/data init ~/sample/init/genesis-n15.json"
+      sudo su - SSH_USER -c "mkdir -p ~/sample/data; cp -r /vagrant/init ~/sample/"
+      sudo su - SSH_USER -c "geth --datadir ~/sample/data init ~/sample/init/genesis-n15.json"
     EOF
   end
 
