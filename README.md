@@ -32,10 +32,10 @@
 
 ##  2. Install ethereum packages
 ``` bash
-sudo apt-get install software-properties-common
-sudo add-apt-repository -y ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get install ethereum -y
+$ sudo apt-get install software-properties-common
+$ sudo add-apt-repository -y ppa:ethereum/ethereum
+$ sudo apt-get update
+$ sudo apt-get install ethereum -y
 ```
 
 ## 3. Prepare the resources
