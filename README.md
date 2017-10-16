@@ -45,7 +45,7 @@ $ geth --datadir ~/sample/data init ~/sample/init/genesis-n15.json
    - windows: > powershell.exe .\setup.ps1
    - linux: $ .\setup.sh
    
-4. Try basic Geth usage : docs/basic-geth.md
+4. Try basic Geth usage : [docs/basic-geth.md](docs/basic-geth.md)
    - To create private blockchain network using Geth
    - Basic transfer transaction between accounts
    - How P2P works
