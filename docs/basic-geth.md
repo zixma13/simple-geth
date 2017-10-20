@@ -1,4 +1,4 @@
-# Miner node (169.254.142.21)
+# Miner node (192.168.66.21)
 
 ## 1. Create new account 
 ```
@@ -46,7 +46,7 @@ $ geth attach ipc:/home/amusikapan/sample/data/geth.ipc
 
 
 
-# Node1 (169.254.142.31)
+# Node1 (192.168.66.31)
 
 ## 1. Create account 
 ```
@@ -58,7 +58,7 @@ $ geth --datadir ~/sample/data account new
 ## 2. Accessing boot node with the same networkid and access the console.
 (from miner's enode so replace [::] with miner node's IP address)
 ```
-$ geth --datadir ~/sample/data --networkid 15 --bootnodes enode://4947c74c60285b583396f6915c8f422c492a34855f9144dad5c808b0039691705e03589cee6a847824f14d7d99f2b581f3c2351e7f0586e0caf375a1744b228a@169.254.142.21:30303 console
+$ geth --datadir ~/sample/data --networkid 15 --bootnodes enode://4947c74c60285b583396f6915c8f422c492a34855f9144dad5c808b0039691705e03589cee6a847824f14d7d99f2b581f3c2351e7f0586e0caf375a1744b228a@192.168.66.21:30303 console
 ```
 
 > note : 
@@ -132,7 +132,7 @@ $ geth --datadir ~/sample/data init ~/sample/init/genesis-n15.json
 ## 4. Accessing node1 as a boot node
 ( from miner enode so replace [::] with miner node's IP addr )
 ``` bash
-$ geth --datadir ~/sample/data --networkid 15 --bootnodes enode://e642e27701b9625d21f71095dba93e4bb068101bd82dbea381b2e5504ad1928d55fd7fcd16fbc55cb2f77e444e9cc00f796fb1a66bd714ec09656f66d762195c@169.254.142.31:30303
+$ geth --datadir ~/sample/data --networkid 15 --bootnodes enode://e642e27701b9625d21f71095dba93e4bb068101bd82dbea381b2e5504ad1928d55fd7fcd16fbc55cb2f77e444e9cc00f796fb1a66bd714ec09656f66d762195c@192.168.66.31:30303
 ```
 
 ## 5. Access javascript console

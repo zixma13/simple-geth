@@ -25,9 +25,9 @@
 
 ## 1. Create 3 Ubuntu's VMs with ssh access provisioning
 ```
-169.254.142.21 miner1
-169.254.142.31 node1
-169.254.142.32 node2
+192.168.66.21 miner1
+192.168.66.31 node1
+192.168.66.32 node2
 ```
 
 ##  2. Install ethereum packages
