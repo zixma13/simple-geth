@@ -10,22 +10,21 @@ $ geth --datadir ~/sample/data account new
 
 ## 2. Start mining (and transfer Gas to the created account)
 ```
-$ geth --datadir ~/sample/data --networkid 15 --etherbase 
+$ geth --datadir ~/sample/data --networkid 15 --etherbase '0xf1c05e4867ce94c2ea9e86839751c773c06dfa18' --mine
 ```
-- '0xf1c05e4867ce94c2ea9e86839751c773c06dfa18' --mine
 - (Waiting until 'Generating DAG' is completed)
 - (if 'Done generating DAG for epoch 0' that means ..... the difficalty has been setup is to high (just decrease and re-init or waiting)
 
 ## 3. Open javascript console of running mine (by attach process)
 $ geth attach ipc:```[full/path/of/geth.ipc]``` for example:
 ```
-$ geth attach ipc:/home/amusikapan/sample/data/geth.ipc
+$ geth attach ipc:/home/apisak/sample/data/geth.ipc
 ```
 
 
 ## 4. Import script from console 
 ``` javascript
-> loadScript("/home/amusikapan/sample/scripts/geth_utils.js")
+> loadScript("/home/apisak/sample/init/scripts/utils.js")
 ```
 - ( the '>' leading means -> using javascript console)
 - ( the '$' leading means -> using bash console)
@@ -33,7 +32,7 @@ $ geth attach ipc:/home/amusikapan/sample/data/geth.ipc
 
 ## 5. Call function in script 
 ```
-> checkAllBalances();
+> getBalances();
 ```
 
 ## 6. Get node info (if another nodes need to connect)
@@ -67,8 +66,8 @@ $ geth --datadir ~/sample/data --networkid 15 --bootnodes enode://4947c74c60285b
 
 ## 3. Get balances (using script)
 ``` 
-> loadScript("/home/amusikapan/sample/scripts/geth_utils.js")
-> checkAllBalances();
+> loadScript("/home/apisak/sample/scripts/geth_utils.js")
+> getBalances();
 ```
 or uing 'eth' 
 ```
@@ -137,14 +136,14 @@ $ geth --datadir ~/sample/data --networkid 15 --bootnodes enode://e642e27701b962
 
 ## 5. Access javascript console
 ``` bash
-$ geth attach ipc:///home/amusikapan/sample/data/geth.ipc
+$ geth attach ipc:///home/apisak/sample/data/geth.ipc
 ```
 
 ## 6. Copy javascript from miner to same folder (can be different)
 ## 7. Get balance 
 ``` bash
-> loadScript("/home/amusikapan/sample/scripts/geth_utils.js")
-> checkAllBalances();
+> loadScript("/home/apisak/sample/scripts/geth_utils.js")
+> getBalances();
 ```
 
 
