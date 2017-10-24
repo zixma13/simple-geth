@@ -71,7 +71,7 @@ EOF
 
 ### 3.3 Coding javascript to check balances of all local accounts
 ``` bash
-$ cat <<'EOF' >> ~/sample/init/scripts/geth_utils.js
+$ cat <<'EOF' >> ~/sample/init/scripts/utils.js
 function checkAllBalances() {
     var totalBal = 0;
     for (var acctNum in eth.accounts) {

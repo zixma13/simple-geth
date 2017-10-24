@@ -66,7 +66,7 @@ $ geth --datadir ~/sample/data --networkid 15 --bootnodes enode://4947c74c60285b
 
 ## 3. Get balances (using script)
 ``` 
-> loadScript("/home/apisak/sample/scripts/geth_utils.js")
+> loadScript("/home/apisak/sample/init/scripts/utils.js")
 > getBalances();
 ```
 or uing 'eth' 
